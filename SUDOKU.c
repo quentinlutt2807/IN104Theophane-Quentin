@@ -5,19 +5,19 @@
 
 
 
-void printlamatrice(int matrice[TAILLE][TAILLE]){
+void printlamatrice(int** grille){
 	for(int i=0; i<TAILLE; i++)
 		{
 			for(int j=0; j<TAILLE; j++)
 			{
-				printf("%9d", matrice[i][j]);
+				printf("%9d", grille[i][j]);
 			}
 			printf("\n");
 		}
 }
 
 
-int remplirdiag(int matrice[TAILLE][TAILLE])
+void remplirdiag(int** grille)
 {
 	int n = rand()%9 + 1; // nombre entre 1 et 9 Normalement
 
@@ -25,11 +25,9 @@ int remplirdiag(int matrice[TAILLE][TAILLE])
 		{
 			for(int j=0; j<3; j++)
 			{
-				matrice[i][j]=n;
+				grille[i][j]=n;
 			}
-
 		}
-			return matrice[TAILLE][TAILLE];
 }
 
 
@@ -37,19 +35,16 @@ int  main(int argc, char const *argv[])
 {
 	//srand(time(NULL));
 
-	int matricedebase[TAILLE][TAILLE]={
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				{0,0,0,0,0,0,0,0,0},
-				}; ;
+	int **grille=calloc(9,sizeof(int*));
+	for (int i=0; i<9; ++i)
+	{
+		int* ligne=calloc(9,sizeof(int));
+		grille[i]=ligne;
+	}
 
-		printlamatrice(matricedebase[TAILLE][TAILLE]);
-		matricedebase=remplirdiag(matricedebase[TAILLE][TAILLE]);
-		printlamatrice(matricedebase[TAILLE][TAILLE]);
+	printlamatrice(grille);
+	printf("\n");
+	printf("\n");
+	remplirdiag(grille);
+	printlamatrice(grille);
 }
