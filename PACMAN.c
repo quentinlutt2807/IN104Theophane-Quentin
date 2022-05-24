@@ -4,7 +4,7 @@
 
 #define height 30
 #define width 60
-#define NR_GHOSTS 70
+#define NR_GHOSTS 10
 
 
 struct coordinates {
@@ -251,7 +251,7 @@ void lives(struct pacman *pac, char area[height][width])
 }
 
 
-int  main(int argc, char const *argv[])
+/*int  main(int argc, char const *argv[])
 {
 	srand(time(NULL));
 	struct ghost allGhosts[NR_GHOSTS];
@@ -301,4 +301,4 @@ while (pac->lives>=1){
 
 
 return 0;
-}
+}*/
